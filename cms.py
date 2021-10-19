@@ -31,7 +31,7 @@ def updatecustomer(id, name, age, mobile):
     cusmob[index_no]= mobile
 
 def deletecustomer(id):
-    index_no= cusid.index(id)     # using index function to find index number
+    index_no= cusid.index(id)     # using index method to find index number
     cusname.pop(index_no)
     cusage.pop(index_no)
     cusmob.pop(index_no)
