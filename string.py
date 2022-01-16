@@ -273,6 +273,7 @@
 # else:
 #     print("non space special character")
 #***********************************
+
 """Formated string"""
 # we can formate the string with variable  bu using replacement {} and .format() method
 #
