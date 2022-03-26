@@ -1,52 +1,35 @@
-# f= open("nafeesdata06.txt",'r')
-#
-# print("file_name: ",f.name)
-# print("file_mode: ",f.mode)
-# print(f.read())
-#
-# print("is file closed: ", f.closed)                  # False
-# print("is file writable: ", f.writable())            # False
-# print("is file readable: ", f.readable())            # True
-#
-# f.close()                     # we close the file
-# print("file_closed")
-# print("is file closed: ", f.closed)          # True
-#------------------------
+#help("modules")
 
-# f= open("file_handling1.txt","w")
-# f.write("nafees\n")
-# f.write("ahmad\n")
-# f.write("is a good boy:\n")
-# f.write("bahubali2 is good movie in all over the world\n")
-# f.write("Hey all.. i am bot how are you")
-# f.close()
-#
-# print("data is saved successfully,,,,,")
-
-#--------------------------------
-f= open("listdata1.txt","w")
-l= ['nafees\n','ahmad\n','anis\n','faiz\n']
-#d= {"nafees":100,"ahmad":50}
-#d= {100: 'nafees', 200:'ahm'}       # when we access values from the dictionary/  key should be str type only
-f.writelines(l)
-""" to saved the txt data in form of collection related
-                                       data type like list, dict, tuple, set"""
-
-print("list of files saved successfully,,,,")
-f.close()
+#=================
 
 
+import pymysql
 
+con= pymysql.connect(host='107.0.0.1',database='pythondb',user='root',password='220797')
 
+cursor=con.cursor()
+cursor.execute("create table employees(eno int(5) primary key,ename varchar(esal double(10,2),eaddr varchar(10))")
+print("Table Created...")
 
+sql = "insert into employees(eno, ename, esal, eaddr) VALUES(%s, %s, %s, %s)"
+records= [(100,'Sachin',1000,'Mumbai'),
+          (200,'Dhoni',2000,'Ranchi'),
+          (300,'Kohli',3000,'Delhi')]
 
+cursor.execute(sql,records)
 
+print("Records Inserted Successfully...")
+cursor.execute("select * from employees")
 
+data=cursor.fetchall()
 
+for row in data:
+    print("Employee Number:",row[0])
+    print("Employee Name:",row[1])
+    print("Employee Salary:",row[2])
+    print("Employee Address:",row[3])
+    print()
+    print()
 
-
-
-
-
-
-
+con.commit()
+con.close()
